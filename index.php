@@ -1,3 +1,10 @@
+<?php
+session_start();
+if((isset($_SESSION['log_in'])) && $_SESSION['log_in']==true){
+    header('Location:dashboard.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -18,7 +25,9 @@ and open the template in the editor.
         <input type="submit" value="Login">
         </form>
         <?php
-        // put your code here
+        if(isset($_SESSION['error'])) {
+                echo $_SESSION['error'];
+        }
         ?>
     </body>
 </html>
